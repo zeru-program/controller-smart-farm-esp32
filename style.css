@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body {
+    font-family: "Ubuntu";
+}
+
+
+/* circular progres */
+.center {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slider {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    user-select: none;
+}
+.knob {
+    width: 140px;
+    height: 140px;
+    background: rgb(222, 222, 222);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.knob .rotator {
+    /*width: 180px;
+    height: 180px;
+    background: rgb(235, 235, 235);
+    border-radius: 50%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), inset 1px 2px 1px white,
+    2px -1px 1px rgba(0, 0, 0, 0.2), -1px 0px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;*/
+}
+.knob .text {
+    width: 80px;
+    height: 80px;
+    margin: 0 15px;
+    font-family: poppins;
+    font-size: 25px;
+    font-weight: 600;
+    color: #515be8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pointer {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: calc(50% - 10px);
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transform-origin: 75px 10px;
+    transform: rotate(-45deg);
+}
+.pointer span {
+    font-size: 30px;
+    transform: rotate(180deg) translateX(15px);
+}
+circle {
+    fill: none;
+}
+circle:nth-child(1) {
+    stroke: rgba(0, 0, 0, 0.2);
+    stroke-width: 12px;
+    stroke-dasharray: 200;
+    transform-origin: center;
+    transform: rotate(-100deg);
+    stroke-linecap: round;
+}
+circle:nth-child(2) {
+    stroke: rgb(2, 117, 232);
+    stroke-width: 15px;
+    stroke-dasharray: 880;
+    stroke-dashoffset: calc(880 - (200 * 0) / 100);
+    transform-origin: center;
+    transform: rotate(135deg);
+    stroke-linecap: round;
+}
