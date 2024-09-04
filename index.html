@@ -23,7 +23,16 @@
     <link rel="stylesheet" href="style.css" type="text/css" media="all" />
 </head>
 <body>
-    <!-- opening screen -->
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand " href="/">SmartFarm</a>
+            <i class="bi bi-bag sec-bg px-4 py-3"></i>
+        </div>
+      </nav>
+      <!-- navbar -->
+      
+      <!-- opening screen -->
     <div class="text-center w-100 vh-100 d-none flex-column align-items-center justify-content-center" id="opening-screen">
         <h1 class="m-0 fw-bold" style="color:#515be8">
             Smart Farm
@@ -33,7 +42,9 @@
     <!-- opening screen -->
 
     <!-- main content -->
-    <main class="d-flex">
+    <main class="d-flex flex-column container-fluid mt-3">
+        <h2 class="mt-5">Welcome !</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, veniam.</p>
         <div class="center">
         <div class="slider">
             <div class="knob">
@@ -62,8 +73,35 @@
                 </defs>
             </svg>
         </div>
-        <input type="number" id="manualInput" min="0" max="100" value="0" />
-    </div>
+        <div class="slider">
+            <div class="knob">
+                <div class="rotator">
+                    <div class="text">0</div>
+                </div>
+                <div class="pointer">
+                    <span class="material-icons">play_arrow</span>
+                </div>
+            </div>
+    
+            <svg class="progress-bar" width="200" height="200">
+                <circle class="progress-circle" cx="100" cy="100" r="90"></circle>
+                <circle
+                    id="circle2"
+                    class="progress-circle"
+                    cx="100"
+                    cy="100"
+                    r="90"
+                    style="stroke: url(#gradient); stroke-width: 12px; stroke-linecap: round;"
+                ></circle>
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color: #515be8" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <!-- <input type="number" id="manualInput" min="0" max="100" value="0" /> -->
+        </div>
     </main>
     <!-- main content -->
 

@@ -4,6 +4,13 @@ body {
     font-family: "Ubuntu";
 }
 
+.primary-color {
+    color: rgba(119, 237, 150);
+}
+.sec-bg {
+    background-color: rgba(119, 237, 150, .2);
+}
+
 
 /* circular progres */
 .center {
@@ -12,6 +19,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .slider {
     width: 300px;
