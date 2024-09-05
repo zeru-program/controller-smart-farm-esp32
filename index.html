@@ -42,7 +42,7 @@
     <!-- opening screen -->
 
     <!-- main content -->
-    <main class="d-flex flex-column container-fluid mt-3">
+    <main class="d-flex flex-column container-fluid mt-3 pb-5">
         <h2 class="mt-5">Tanaman stabil !</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, veniam.</p>
         <div class="d-flex flex-column">
@@ -111,12 +111,12 @@
                 </div>
             <!-- <input type="number" id="manualInput" min="0" max="100" value="0" /> -->
             </div>
-            <div style="z-index: 999;" class="d-flex mt-3 align-items-center text-center flex-column w-100 container-fluid">
+            <div style="z-index: 999;" class="d-flex pb-5 mt-3 align-items-center text-center flex-column w-100 container-fluid">
               <h4>Kipas</h4> 
               <button id="on-kipas" class="px-5 btn-controll fw-bold py-2 bg-transparent outline-pri primary-color" onclick="kipas('on')">ON</button>
               <button id="off-kipas" class="px-5 btn-controll mt-2 fw-bold py-2 pri-bg text-light border-0" onclick="kipas('off')">OFF</button>
             </div>
-            <div class="d-flex mt-5 align-items-center text-center flex-column w-100 container-fluid">
+            <div class="d-flex mt-2 align-items-center text-center flex-column w-100 container-fluid">
               <h4>Aliran air</h4>  
               <button id="on-air" class="px-5 btn-controll fw-bold py-2 bg-transparent outline-pri primary-color" onclick="siram('on')">ON</button>
               <button id="off-air" class="px-5 btn-controll mt-2 fw-bold py-2 pri-bg text-light border-0" onclick="siram('off')">OFF</button>
@@ -127,8 +127,8 @@
     <!-- main content -->
     
     <!-- date and time showing -->
-    <div class="position-fixed d-flex w-100 justify-content-center" style="bottom:0">
-    <div class="rounded-1 pri-bg text-dark p-2" id="date-time">
+    <div class="position-fixed d-flex w-100 justify-content-center" style="bottom:0;z-index: 9999;">
+    <div class="rounded-1 pri-bg text-dark p-2 shadow-lg" id="date-time">
         00/00/0000 - 00:00:00
     </div>
     </div>
@@ -136,7 +136,7 @@
     
     <!-- setting popup -->
     <div id="setting-popup" class="w-100 vh-100 d-none justify-content-center align-items-center" style="z-index:99999;background:rgba(0,0,0,.2);position:fixed;top:0;left:0;backdrop-filter:blur(3px)">
-        <div class="rounded-2 d-flex justify-content-center align-items-center bg-light position-relative" style="width:300px;height:600px;">
+        <div class="rounded-2 d-flex justify-content-center align-items-center bg-light position-relative" style="width:300px;height:80%;">
             <button type="button" class="btn btn-danger" onclick="closeSetting()" style="position:absolute;right:10px;top:10px;">X</button>
             <h3>Setting popup</h3>
         </div>
@@ -147,5 +147,6 @@
 
     <script src="main.js" type="text/javascript" charset="utf-8"></script>
     <script src="circular.js" type="text/javascript" charset="utf-8"></script>
+    <script src="event.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
