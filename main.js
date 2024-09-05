@@ -3,84 +3,86 @@ function start() {
     document.getElementById('opening-screen').classList.add("d-none")
 }
 
-let knob = document.querySelector(".knob");
-let circle = document.getElementById("circle2");
-let pointer = document.querySelector(".pointer");
-let text = document.querySelector(".text");
-let manualInput = document.getElementById("manualInput");
+/* waktu tanggal */
+function updateDateTime() {
+    var now = new Date();
+    var date = now.toLocaleDateString('id-ID'); // Format tanggal sesuai lokal Indonesia
+    var time = now.toLocaleTimeString('id-ID'); // Format waktu sesuai lokal Indonesia
+    document.getElementById('date-time').innerHTML = date + ' - ' + time;
+}
+setInterval(updateDateTime, 1000);
+updateDateTime();
+/* waktu tanggal */
 
-let isRotating = false;
+/* open setting */
+var settingPopup = document.getElementById("setting-popup")
+function openSetting() {
+    settingPopup.classList.remove("d-none")
+    settingPopup.classList.add("d-flex")
+}
+function closeSetting() {
+    settingPopup.classList.remove("d-flex")
+    settingPopup.classList.add("d-none")
+}
+/* open setting */
 
-document.addEventListener("mousedown", (e) => {
-    if (e.target.closest(".knob")) {
-        isRotating = true;
+const endpoint = ""
+
+function kipas(state) {
+    const kipasOn = document.getElementById("on-kipas")
+    const kipasOff = document.getElementById("off-kipas")
+    
+    if (state === "on") {
+        kipasOn.classList.add("pri-bg")
+        kipasOn.classList.remove("bg-transparent")
+        kipasOn.classList.add("text-light")
+        kipasOff.classList.remove("pri-bg")
+        kipasOff.classList.remove("text-light")
+        kipasOff.classList.remove("border-0")
+        kipasOff.classList.add("bg-transparent")
+        kipasOff.classList.add("outline-pri")
+        kipasOff.classList.add("primary-color")
+        
+    } else if (state === "off") {
+        kipasOff.classList.add("pri-bg")
+        kipasOff.classList.remove("bg-transparent")
+        kipasOff.classList.add("text-light")
+        kipasOn.classList.remove("pri-bg")
+        kipasOn.classList.remove("text-light")
+        kipasOn.classList.remove("border-0")
+        kipasOn.classList.add("bg-transparent")
+        kipasOn.classList.add("outline-pri")
+        kipasOn.classList.add("primary-color")
+    } else {
+        alert("?")
     }
-});
+}
 
-const rotateKnob = (e) => {
-    if (isRotating) {
-        let clientX, clientY;
-        if (e.touches) {
-            clientX = e.touches[0].clientX;
-            clientY = e.touches[0].clientY;
-        } else {
-            clientX = e.clientX;
-            clientY = e.clientY;
-        }
-
-        let knobX = knob.getBoundingClientRect().left + knob.clientWidth / 2;
-        let knobY = knob.getBoundingClientRect().top + knob.clientHeight / 2;
-
-        let deltaX = clientX - knobX;
-        let deltaY = clientY - knobY;
-
-        let angleRad = Math.atan2(deltaY, deltaX);
-        let angleDeg = (angleRad * 180) / Math.PI;
-
-        let rotationAngle = (angleDeg - 135 + 360) % 360;
-
-        // Ubah logika menjadi 180°
-        if (rotationAngle <= 180) {
-            pointer.style.transform = `rotate(${rotationAngle - 45}deg)`;
-
-            let progressPercent = rotationAngle / 180;
-
-            // Sesuaikan strokeDashoffset untuk 180°
-            circle.style.strokeDashoffset = `${880 - 440 * progressPercent}`;
-
-            let value = Math.round(progressPercent * 100);
-            text.innerHTML = value;
-            manualInput.value = value;
-        }
+function siram(state) {
+    const kipasOn = document.getElementById("on-air")
+    const kipasOff = document.getElementById("off-air")
+    
+    if (state === "on") {
+        kipasOn.classList.add("pri-bg")
+        kipasOn.classList.remove("bg-transparent")
+        kipasOn.classList.add("text-light")
+        kipasOff.classList.remove("pri-bg")
+        kipasOff.classList.remove("text-light")
+        kipasOff.classList.remove("border-0")
+        kipasOff.classList.add("bg-transparent")
+        kipasOff.classList.add("outline-pri")
+        kipasOff.classList.add("primary-color")
+    } else if (state === "off") {
+        kipasOff.classList.add("pri-bg")
+        kipasOff.classList.remove("bg-transparent")
+        kipasOff.classList.add("text-light")
+        kipasOn.classList.remove("pri-bg")
+        kipasOn.classList.remove("text-light")
+        kipasOn.classList.remove("border-0")
+        kipasOn.classList.add("bg-transparent")
+        kipasOn.classList.add("outline-pri")
+        kipasOn.classList.add("primary-color")
+    } else {
+        alert("?")
     }
-};
-
-document.addEventListener("mousemove", rotateKnob);
-document.addEventListener("mouseup", () => {
-    isRotating = false;
-});
-
-document.addEventListener("touchstart", (e) => {
-    if (e.target.closest(".knob")) {
-        isRotating = true;
-    }
-});
-
-document.addEventListener("touchmove", rotateKnob);
-document.addEventListener("touchend", () => {
-    isRotating = false;
-});
-
-// Function to update the knob based on manual input
-manualInput.addEventListener("input", (e) => {
-    let value = parseInt(e.target.value);
-    if (value < 0 || value > 100) return;
-
-    // Sesuaikan rotasi untuk 180°
-    let rotationAngle = (value * 180) / 100;
-    pointer.style.transform = `rotate(${rotationAngle - 45}deg)`;
-
-    let progressPercent = rotationAngle / 180;
-    circle.style.strokeDashoffset = `${880 - 440 * progressPercent}`;
-    text.innerHTML = value;
-});
+}
