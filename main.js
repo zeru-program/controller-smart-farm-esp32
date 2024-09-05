@@ -26,7 +26,7 @@ function closeSetting() {
 }
 /* open setting */
 
-const endpoint = ""
+const endpoint = "http://192.168.110.16/"
 
 function kipas(state) {
     const kipasOn = document.getElementById("on-kipas")
@@ -43,6 +43,17 @@ function kipas(state) {
         kipasOff.classList.add("outline-pri")
         kipasOff.classList.add("primary-color")
         
+        fetch(endpoint + "kipas", {
+            method: "POST"
+        })
+        .then(res => res.text())
+        .then(result => {
+            Swal.fire({
+                title: "Berhasil !",
+                text: result,
+                icon: "success"
+              });
+        })
     } else if (state === "off") {
         kipasOff.classList.add("pri-bg")
         kipasOff.classList.remove("bg-transparent")
@@ -53,6 +64,18 @@ function kipas(state) {
         kipasOn.classList.add("bg-transparent")
         kipasOn.classList.add("outline-pri")
         kipasOn.classList.add("primary-color")
+
+        fetch(endpoint + "kipas", {
+            method: "GET"
+        })
+        .then(res => res.text())
+        .then(result => {
+            Swal.fire({
+                title: "Berhasil !",
+                text: result,
+                icon: "info"
+              });
+        })
     } else {
         alert("?")
     }
@@ -72,6 +95,18 @@ function siram(state) {
         kipasOff.classList.add("bg-transparent")
         kipasOff.classList.add("outline-pri")
         kipasOff.classList.add("primary-color")
+
+        fetch(endpoint + "air", {
+            method: "POST"
+        })
+        .then(res => res.text())
+        .then(result => {
+            Swal.fire({
+                title: "Berhasil !",
+                text: result,
+                icon: "success"
+              });
+        })
     } else if (state === "off") {
         kipasOff.classList.add("pri-bg")
         kipasOff.classList.remove("bg-transparent")
@@ -82,6 +117,18 @@ function siram(state) {
         kipasOn.classList.add("bg-transparent")
         kipasOn.classList.add("outline-pri")
         kipasOn.classList.add("primary-color")
+
+        fetch(endpoint + "air", {
+            method: "GET"
+        })
+        .then(res => res.text())
+        .then(result => {
+            Swal.fire({
+                title: "Berhasil !",
+                text: result,
+                icon: "info"
+              });
+        })
     } else {
         alert("?")
     }
