@@ -28,6 +28,18 @@ function closeSetting() {
 
 const endpoint = "http://192.168.110.16/"
 
+getDht()
+
+function getDht() {
+    fetch(endpoint + "dht", {
+        method: "GET"
+    })
+    .then(res => res.json())
+    .then(result => {
+        alert(result.temperature)
+    })
+}
+
 function kipas(state) {
     const kipasOn = document.getElementById("on-kipas")
     const kipasOff = document.getElementById("off-kipas")
