@@ -31,14 +31,18 @@ const endpoint = "http://192.168.110.16/"
 getDht()
 
 function getDht() {
+    var showTemp = document.getElementById("display-temp")
     fetch(endpoint + "dht", {
         method: "GET"
     })
     .then(res => res.json())
     .then(result => {
-        alert(result.temperature)
+        showTemp.innerText = result.temperature + "°C"
+        console.log(result)
     })
 }
+
+setInterval(getDht, 10);
 
 function kipas(state) {
     const kipasOn = document.getElementById("on-kipas")
