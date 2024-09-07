@@ -27,6 +27,7 @@ function closeSetting() {
 /* open setting */
 
 const endpoint = "http://192.168.43.35/"
+const endpoint2 = "http://192.168.43.52/"
 
 getDht()
 getSoil()
@@ -125,7 +126,7 @@ function siram(state) {
         kipasOff.classList.add("outline-pri")
         kipasOff.classList.add("primary-color")
 
-        fetch(endpoint + "air", {
+        fetch(endpoint2 + "air", {
             method: "POST"
         })
         .then(res => res.text())
@@ -147,7 +148,7 @@ function siram(state) {
         kipasOn.classList.add("outline-pri")
         kipasOn.classList.add("primary-color")
 
-        fetch(endpoint + "air", {
+        fetch(endpoint2 + "air", {
             method: "GET"
         })
         .then(res => res.text())
