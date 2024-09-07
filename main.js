@@ -26,7 +26,7 @@ function closeSetting() {
 }
 /* open setting */
 
-const endpoint = "http://192.168.110.16/"
+const endpoint = "http://192.168.43.52/"
 
 getDht()
 getSoil()
