@@ -26,7 +26,7 @@ function closeSetting() {
 }
 /* open setting */
 
-const endpoint = "http://192.168.110.16/"
+const endpoint = "http://192.168.43.35/"
 
 getDht()
 
@@ -42,7 +42,18 @@ function getDht() {
     })
 }
 
-setInterval(getDht, 10);
+function getSoil() {
+    var showSoil = document.getElementById("display-soil")
+    fetch(endpoint + "soil", {
+        method: "GET"
+    })
+    .then(res => res.text())
+    .then(result => {
+        showSoil.innerText = result + "%"
+    })
+}
+
+setInterval(getSoil, 500);
 
 function kipas(state) {
     const kipasOn = document.getElementById("on-kipas")
