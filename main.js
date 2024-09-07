@@ -54,7 +54,11 @@ function getSoil() {
     })
 }
 
+<<<<<<< main
 setInterval(getDht, 500);
+=======
+setInterval(getSoil     , 500);
+>>>>>>> local
 setInterval(getSoil, 500);
 
 function kipas(state) {
