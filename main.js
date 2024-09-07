@@ -26,11 +26,8 @@ function closeSetting() {
 }
 /* open setting */
 
-<<<<<<< HEAD
 const endpoint = "http://192.168.43.35/"
-=======
-const endpoint = "http://192.168.43.52/"
->>>>>>> d5556d503f73ea7db2db892381a874b705f03d05
+const endpoint2 = "http://192.168.43.52/"
 
 getDht()
 getSoil()
@@ -47,7 +44,6 @@ function getDht() {
     })
 }
 
-<<<<<<< HEAD
 function getSoil() {
     var showSoil = document.getElementById("display-soil")
     fetch(endpoint + "soil", {
@@ -59,16 +55,8 @@ function getSoil() {
     })
 }
 
-<<<<<<< main
 setInterval(getDht, 500);
-=======
-setInterval(getSoil     , 500);
->>>>>>> local
 setInterval(getSoil, 500);
-=======
-setInterval(getDht, 10);
-setInterval(getSoil, 10);
->>>>>>> d5556d503f73ea7db2db892381a874b705f03d05
 
 function kipas(state) {
     const kipasOn = document.getElementById("on-kipas")
