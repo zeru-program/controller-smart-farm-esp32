@@ -29,6 +29,7 @@ function closeSetting() {
 const endpoint = "http://192.168.110.16/"
 
 getDht()
+getSoil()
 
 function getDht() {
     var showTemp = document.getElementById("display-temp")
@@ -43,6 +44,7 @@ function getDht() {
 }
 
 setInterval(getDht, 10);
+setInterval(getSoil, 10);
 
 function kipas(state) {
     const kipasOn = document.getElementById("on-kipas")
