@@ -61,8 +61,8 @@ body {
     align-items: center;
     justify-content: center;
 }
-.knob .rotator {
-    /*width: 180px;
+/*.knob .rotator {
+    width: 180px;
     height: 180px;
     background: rgb(235, 235, 235);
     border-radius: 50%;
@@ -71,8 +71,8 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    z-index: 1;*/
-}
+    z-index: 1;
+} */
 .knob .text {
     width: 80px;
     height: 80px;
@@ -121,4 +121,34 @@ circle:nth-child(2) {
     transform-origin: center;
     transform: rotate(170deg);
     stroke-linecap: round;
+}
+
+#page_button {
+    border: 3px solid rgba(119, 237, 150, .2);
+    background-color: rgba(119, 237, 150);
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    justify-content: right;
+}
+table{
+    flex: center;
+    border: collapse;
+    width: 80%;
+    border-radius: 5px;
+}
+td, th {
+    border: 2px solid rgba(119, 237, 150);
+    text-align: center;
+    padding: 2px;
+}
+tr:nth-child(odd) {
+    background-color: rgba(119, 237, 150);
+}
+
+#GiveData {
+    border: 5px solid rgba(119, 237, 150, .2);
+    color: white;
+    background-color: rgba(119, 237, 150);
+    justify-self: center;
 }
