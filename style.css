@@ -152,3 +152,22 @@ tr:nth-child(odd) {
     background-color: rgba(119, 237, 150);
     justify-self: center;
 }
+.pagination {
+    border-radius: 50%;
+    display: flex;
+    
+}
+.pagination a{
+    border:1px #77ed96 solid;
+    color: #77ed96;
+    padding: 6px 18px;
+    text-decoration: none;
+}
+.pagination a.active{
+    background-color: #77ed96;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: rgba(119, 237, 150, .2);
+}

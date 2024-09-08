@@ -7,15 +7,19 @@ function updateDateTime() {
 
 //menambahkan data ke tabel
 function AddToTable() {
-    var table = document.getElementById('Table_data');
-    var row = table.insertRow(1);
+    var table = document.getElementById("Table_data");
+    var row = table.insertRow(0);
     var Date = row.insertCell(0);
     var Time = row.insertCell(1);
     var Temp = row.insertCell(2);
     var Humid = row.insertCell(3);
-    
-    Date.innerHTML = "DD/MM/YY";
-    Time.innerHTML = "hh:mm:ss";
+
+    const now = new Date();
+    const CurrentTime = now.toLocaleTimeString('id-ID');
+    const CurrentDate = now.toLocaleDateString('id-ID');
+
+    Date.innerHTML = "CurrentDate";
+    Time.innerHTML = "CurrentTime";
     Temp.innerHTML = "result.temperature";
     Humid.innerHTML = "Humidity";
     }
