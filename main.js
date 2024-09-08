@@ -26,27 +26,34 @@ function closeSetting() {
 }
 /* open setting */
 
-const endpoint = "http://192.168.43.35/"
-const endpoint2 = "http://192.168.43.52/"
+var db = "https://controler-smart-farm-default-rtdb.firebaseio.com/"
+let endpointServer
+let endpointClient
+
+fetch(db + "data/-O6CRRduZZleytOeBYMw.json")
+.then(res => res.json())
+.then(data => {
+    endpointServer = data.ipServer;
+    endpointClient = data.ipClient;
+})
 
 getDht()
 getSoil()
 
 function getDht() {
     var showTemp = document.getElementById("display-temp")
-    fetch(endpoint + "dht", {
+    fetch(endpointServer + "temp", {
         method: "GET"
     })
     .then(res => res.json())
     .then(result => {
-        showTemp.innerText = result.temperature + "°C"
-        console.log(result)
+        showTemp.innerText = result + "°C"
     })
 }
 
 function getSoil() {
     var showSoil = document.getElementById("display-soil")
-    fetch(endpoint + "soil", {
+    fetch(endpointServer + "soil", {
         method: "GET"
     })
     .then(res => res.text())
@@ -73,7 +80,7 @@ function kipas(state) {
         kipasOff.classList.add("outline-pri")
         kipasOff.classList.add("primary-color")
         
-        fetch(endpoint + "kipas", {
+        fetch("/kipas", {
             method: "POST"
         })
         .then(res => res.text())
@@ -95,7 +102,7 @@ function kipas(state) {
         kipasOn.classList.add("outline-pri")
         kipasOn.classList.add("primary-color")
 
-        fetch(endpoint + "kipas", {
+        fetch("/kipas", {
             method: "GET"
         })
         .then(res => res.text())
@@ -126,7 +133,7 @@ function siram(state) {
         kipasOff.classList.add("outline-pri")
         kipasOff.classList.add("primary-color")
 
-        fetch(endpoint + "air", {
+        fetch("/air", {
             method: "POST"
         })
         .then(res => res.text())
@@ -148,7 +155,7 @@ function siram(state) {
         kipasOn.classList.add("outline-pri")
         kipasOn.classList.add("primary-color")
 
-        fetch(endpoint + "air", {
+        fetch("/air", {
             method: "GET"
         })
         .then(res => res.text())
