@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
     <link rel="shortcut icon" href="https://i.pinimg.com/474x/ef/f6/ac/eff6acfcf843833a9b21070769dae764.jpg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -55,71 +56,55 @@
         <h2 class="mt-5">Tanaman stabil !</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, veniam.</p>
         <div class="d-flex flex-column">
-            <div class="center">
-                <div class="slider">
-                    <div class="knob">
-                        <div class="rotator">
-                            <div class="text textSuhu text-center" style="color:#FF7400 !important">
-                                0°
-                                <br/>
-                                Suhu
-                            </div>
-                        </div>
-                        <div class="pointer">
-                            <span class="material-icons">play_arrow</span>
-                        </div>
-                    </div>
-            
-                    <svg class="progress-bar" width="150" height="150">
-                        <circle class="progress-circle" cx="75" cy="77" r="60"></circle>
-                        <circle
-                            id="circle2"
-                            class="progress-circle"
-                            cx="74"
-                            cy="75"
-                            r="60"
-                            style="stroke: url(#gradient); stroke-width: 12px; stroke-linecap: round;"
-                        ></circle>
-                        <defs>
-                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color: #FF7400" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <div class="slider">
-                    <div class="knob">
-                        <div class="rotator">
-                            <div class="text textKelembapan text-center">
-                                0
-                                <br>
-                                Kelembapan
-                                </div>
-                        </div>
-                        <div class="pointer">
-                            <span class="material-icons">play_arrow</span>
-                        </div>
-                    </div>
-            
-                    <svg class="progress-bar" width="150" height="150">
-                        <circle class="progress-circle" cx="75" cy="77" r="60"></circle>
-                        <circle
-                            id="circle3"
-                            class="progress-circle circle-kele"
-                            cx="74"
-                            cy="75"
-                            r="60"
-                            style="stroke: url(#gradientKelem); stroke-width: 12px; stroke-linecap: round;"
-                        ></circle>
-                        <defs>
-                            <linearGradient id="gradientKelem" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color: #515be8 !important" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-            <!-- <input type="number" id="manualInput" min="0" max="100" value="0" /> -->
-            </div>
+            <div class="progress-wrapper">
+    <!-- Circular Progress 1 -->
+    <div class="progress-container">
+        <svg>
+            <circle class="circle-bg" cx="50%" cy="50%" r="60"></circle> <!-- Radius lebih besar -->
+            <circle class="circle-progress" id="circle1" cx="50%" cy="50%" r="60"></circle> <!-- Radius lebih besar -->
+        </svg>
+        <div class="progress-value" id="progressValue1">0%</div>
+    </div>
+
+    <!-- Circular Progress 2 -->
+    <div class="progress-container d-none ">
+        <svg>
+            <circle class="circle-bg" cx="50%" cy="50%" r="60"></circle> <!-- Radius lebih besar -->
+            <circle class="circle-progress" id="circle2" cx="50%" cy="50%" r="60"></circle> <!-- Radius lebih besar -->
+        </svg>
+        <div class="progress-value" id="progressValue2">0%</div>
+    </div>
+
+    <!-- Circular Progress 3 -->
+    <div class="progress-container">
+        <svg>
+            <circle class="circle-bg" cx="50%" cy="50%" r="60"></circle> <!-- Radius lebih besar -->
+            <circle class="circle-progress" id="circle3" cx="50%" cy="50%" r="60"></circle> <!-- Radius lebih besar -->
+        </svg>
+        <div class="progress-value" id="progressValue3">0%</div>
+    </div>
+</div>
+        </div>
+    </main>
+    <!-- main content -->
+    
+    <!-- date and time showing -->
+    <div class="position-fixed d-none w-100 justify-content-start" style="bottom:0;z-index: 9999;">
+    <div class="rounded-1 m-2 pri-bg text-dark p-2 shadow-lg" id="date-time">
+        00/00/0000 - 00:00:00
+    </div>
+    </div>
+    <!-- date and time showing -->
+    
+    <!-- button show on off toggle pompa or fan -->
+    <div class="position-fixed d-flex w-100 justify-content-end" style="bottom:0;z-index: 9999;" onclick="toggleShowController()">
+    <div class="rounded-1 mb-1 mx-1 pri-bg text-dark p-2 shadow-lg" id="date-time">
+        <i class="bi p-3 bi-tools" style="font-size:20px;"></i>
+    </div>
+    </div>
+    <!-- button show on off toggle pompa or fan -->
+    
+    <div class="d-none bg-light shadow-lg w-100 pb-3 flex-column" style="position: fixed;bottom:0;left:0;z-index:999;" id="popupController">
             <div style="z-index: 999;" class="d-flex pb-5 mt-3 align-items-center text-center flex-column w-100 container-fluid">
               <h4>Kipas</h4> 
               <button id="on-kipas" class="px-5 btn-controll fw-bold py-2 bg-transparent outline-pri primary-color" onclick="kipas('on')">ON</button>
@@ -129,26 +114,8 @@
               <h4>Aliran air</h4>  
               <button id="on-air" class="px-5 btn-controll fw-bold py-2 bg-transparent outline-pri primary-color" onclick="siram('on')">ON</button>
               <button id="off-air" class="px-5 btn-controll mt-2 fw-bold py-2 pri-bg text-light border-0" onclick="siram('off')">OFF</button>
-            </div>
-        </div>
-    </main>
-    <!-- main content -->
-    
-    <!-- date and time showing -->
-    <div class="position-fixed d-flex w-100 justify-content-start" style="bottom:0;z-index: 9999;">
-    <div class="rounded-1 m-2 pri-bg text-dark p-2 shadow-lg" id="date-time">
-        00/00/0000 - 00:00:00
+            </div> 
     </div>
-    </div>
-    <!-- date and time showing -->
-    
-    <!-- button show on off toggle pompa or fan -->
-    <div class="position-fixed d-flex w-100 justify-content-end" style="bottom:0;z-index: 9999;">
-    <div class="rounded-1 m-2 pri-bg text-dark p-2 shadow-lg" id="date-time">
-        00/00/0000 - 00:00:00
-    </div>
-    </div>
-    <!-- button show on off toggle pompa or fan -->
     
     <!--Page Nav-->
     <div class="pagination justify-content-center pb-5 align-item-center">
@@ -167,6 +134,11 @@
         </div>
     </div>
     <!-- setting popup -->
+    
+    <footer class="w-100 text-light bg-success text-center container-fluid py-3">
+        <h1 class="m-0">Smart Farm</h1>
+        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam corporis dignissimos earum veniam asperiores ea totam quo voluptas labore?</p>
+    </footer>
 
 
     <!-- cdn public -->

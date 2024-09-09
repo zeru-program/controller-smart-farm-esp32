@@ -29,99 +29,52 @@ body {
 }
 
 /* circular progres */
-.center {
-    width: 100%;
-    height: 150px;
+
+.progress-wrapper {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
     justify-content: center;
-    /* flex-wrap: wrap; */
-    flex-direction: row;
 }
-.slider {
-    width: 300px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.progress-container {
     position: relative;
-    user-select: none;
-    margin: 0 !important;
+    width: 180px;
+    height: 180px;
 }
-.knob {
-    width: 90px;
-    height: 90px;
-    background: rgb(222, 222, 222);
-    border-radius: 50%;
+
+svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+circle {
+    fill: none;
+    stroke-width: 10;
+}
+
+.circle-bg {
+    stroke: #e0e0e0;
+}
+
+.circle-progress {
+    stroke: #4caf50;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.35s;
+}
+
+.progress-value {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
 }
-/*.knob .rotator {
-    width: 180px;
-    height: 180px;
-    background: rgb(235, 235, 235);
-    border-radius: 50%;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2), inset 1px 2px 1px white,
-    2px -1px 1px rgba(0, 0, 0, 0.2), -1px 0px 1px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-} */
-.knob .text {
-    width: 80px;
-    height: 80px;
-    margin: 0 15px;
-    font-family: poppins;
-    font-size: 13px;
-    font-weight: 600;
-    color: #515be8;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.pointer {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    top: calc(60% - 10px);
-    left: 0;
-    display: none;
-    align-items: center;
-    justify-content: flex-start;
-    transform-origin: 48px 10px;
-    transform: rotate(-5deg);
-}
-.pointer span {
-    font-size: 18px;
-    transform: rotate(180deg) translateX(10px);
-}
-circle {
-    fill: none;
-}
-circle:nth-child(1) {
-    stroke: rgba(0, 0, 0, 0.2);
-    stroke-width: 12px;
-    stroke-dasharray: 200;
-    transform-origin: center;
-    transform: rotate(170deg);
-    stroke-linecap: round;
-}
-circle:nth-child(2) {
-    stroke: rgb(2, 117, 232);
-    stroke-width: 15px;
-    stroke-dasharray: 880;
-    stroke-dashoffset: calc(880 - (200 * 0) / 100);
-    transform-origin: center;
-    transform: rotate(170deg);
-    stroke-linecap: round;
-}
+
+
 
 #page_button {
     border: 3px solid rgba(119, 237, 150, .2);
@@ -131,7 +84,7 @@ circle:nth-child(2) {
     text-decoration: none;
     justify-content: right;
 }
-table{
+table {
     flex: center;
     border: collapse;
     width: 80%;
@@ -155,15 +108,15 @@ tr:nth-child(odd) {
 .pagination {
     border-radius: 50%;
     display: flex;
-    
+
 }
-.pagination a{
-    border:1px #77ed96 solid;
+.pagination a {
+    border: 1px #77ed96 solid;
     color: #77ed96;
     padding: 6px 18px;
     text-decoration: none;
 }
-.pagination a.active{
+.pagination a.active {
     background-color: #77ed96;
     color: white;
 }

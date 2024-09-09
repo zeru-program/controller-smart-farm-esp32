@@ -47,7 +47,9 @@ function getDht() {
     })
     .then(res => res.json())
     .then(result => {
-        showTemp.innerText = result + "°C"
+        showTemp.innerText = result + "°C" 
+        updateProgress(0, result);
+  
     })
 }
 
@@ -59,6 +61,7 @@ function getSoil() {
     .then(res => res.text())
     .then(result => {
         showSoil.innerText = result + "%"
+        updateProgress(2, result);
     })
 }
 
@@ -169,4 +172,18 @@ function siram(state) {
     } else {
         alert("?")
     }
+}
+
+let clickShow = false;
+var popupController = document.getElementById("popupController")
+
+function toggleShowController() {
+    if (clickShow) {
+        popupController.classList.add("d-none")
+        popupController.classList.remove("d-flex")
+    } else {
+        popupController.classList.remove("d-none")
+        popupController.classList.add("d-flex")
+    }
+    clickShow = !clickShow
 }
