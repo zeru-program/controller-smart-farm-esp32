@@ -129,7 +129,7 @@ function siram(state) {
         kipasOff.classList.add("outline-pri")
         kipasOff.classList.add("primary-color")
 
-        fetch("/air", {
+        fetch("http://192.168.237.173/air", {
             method: "POST"
         })
         .then(res => res.text())
@@ -151,7 +151,7 @@ function siram(state) {
         kipasOn.classList.add("outline-pri")
         kipasOn.classList.add("primary-color")
 
-        fetch("/air", {
+        fetch("http://192.168.237.173/air", {
             method: "GET"
         })
         .then(res => res.text())
