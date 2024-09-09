@@ -27,15 +27,8 @@ function closeSetting() {
 /* open setting */
 
 var db = "https://controler-smart-farm-default-rtdb.firebaseio.com/"
-let endpointServer
-let endpointClient
-
-fetch(db + "data/-O6CRRduZZleytOeBYMw.json")
-.then(res => res.json())
-.then(data => {
-    endpointServer = data.ipServer;
-    endpointClient = data.ipClient;
-})
+var endpointServer = "http://192.168.237.16:8080/"
+var endpointClient = "http://192.168.237.173/"
 
 getDht()
 getSoil()
